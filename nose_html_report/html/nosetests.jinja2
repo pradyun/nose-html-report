@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="utf-8">
+
+    <!-- Title -->
+    <title>Nosetests Report</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="pygments.css">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet }}">
+    <!-- Javascript -->
+    <script type="text/javascript" src="jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="nosetests.js"></script>
+</head>
+<body>
+    <div id="header">
+        <h1>Nosetests Report</h1>
+    </div>
+    <div id="container">
+        <p class="summary">
+            Ran {{ len(result.tests) }} tests.
+            {%- if result.failed %} {{ len(result.failed) }} failed. {%- endif %}
+            {%- if result.errored %} {{ len(result.errored) }} raised an error. {%- endif %}
+            {%- if len(result.tests) == len(result.passed) %} All Passed. {%- endif %}
+        </p>
+        <div id="grid">
+            <div class="row header-row">
+                <div class="column column-1 header-column">Module</div>
+                <div class="column column-2 header-column">Test Name</div>
+                <div class="column column-2 header-column">Test Description</div>
+            </div>
+            {%- for test, err in result.tests %}
+                {%- set _, module, qualname = test.address() -%}
+                {%- if (test, err) in result.passed -%}
+                    {% set test_status="Pass" %}
+                {%- elif (test, err) in result.failed -%}
+                    {% set test_status="Fail" %}
+                {%- else -%}
+                    {% set test_status="Error" %}
+                {%- endif %}
+                {%- set description = test.shortDescription() -%}
+            <div class="row {{ test_status.lower() }}-row">
+                <div class="information">
+                    <div class="column column-1"><pre>{{ module }}</pre></div>
+                    <div class="column column-2">
+                        <pre>{{ qualname }}</pre>
+                    </div>
+                    <div class="column column-3">
+                    {% if description -%}
+                        <span class="description">{{ description }}</span>
+                    {% else %}
+                        <span class="no-description"></span>
+                    {%- endif %}
+                    </div>
+                </div>
+                {{ result.format_error(err) }}
+            </div>
+            {%- endfor %}
+        </table>
+    </div>
+</body>
+</html>

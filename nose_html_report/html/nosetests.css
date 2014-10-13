@@ -1,0 +1,73 @@
+/* Page Layout */
+#header {
+    min-width: 100%;
+}
+#header h1 {
+    padding: 15px 10px;
+}
+#container {
+    margin: 5px 10px;
+    white-space: nowrap;
+}
+.summary {
+    margin: 5px 0;
+}
+#grid {
+    min-width: 100%;
+    display: table;
+}
+.column {
+    display: inline-block;
+    margin: 5px;
+}
+
+.information {
+    padding: 1px;
+}
+.error-info {
+    padding: 5px;
+}
+
+/* Coloring, Borders, Text */
+#header {
+    background: #f8f8f8;
+    border-bottom: 1px solid #eee;
+}
+#header h1 {
+    font-weight: normal;
+    font-family: Georgia, serif;
+    font-size: 1.5em;
+    /*color: #7777A0;*/
+}
+#grid {
+    border: solid 0.5px rgba(200, 200, 200, 0.5);
+    border-radius: 5px;
+}
+.row {
+    border-top: solid 0.5px rgba(200, 200, 200, 0.5);
+}
+.header-row {
+    border-top-width: 0 !important;
+}
+.pass-row {
+    background: rgba(0, 255, 0, 0.2);
+}
+.error-row {
+    background: rgba(255, 255, 0, 0.2);
+}
+.fail-row {
+    background: rgba(255, 0, 0, 0.2);
+}
+.error-info {
+    background-color: #FFFFFF;
+    border: solid 1px #C8C8C8;
+    border-radius: 5px;
+}
+.description {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: calc(14.5/16 * 1em);
+}
+
+.error-info pre {
+    line-height: 1.5em;
+}

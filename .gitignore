@@ -1,3 +1,4 @@
+# I know it's dirty... I'll clean this up some other day...
 __pycache__
 dist
 build
@@ -6,3 +7,7 @@ build
 *.pyc
 
 *.sublime-*
+
+README.rst
+
+test-report/
